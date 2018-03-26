@@ -1,0 +1,51 @@
+CREATE TABLE product
+(prodId INT(4) AUTO_INCREMENT NOT NULL,
+prodName VARCHAR(30) NOT NULL,
+prodPicName VARCHAR(50) NOT NULL,
+prodDescrip VARCHAR(1000),
+prodPrice DECIMAL(6,2) NOT NULL DEFAULT 0.00,
+prodQuantity INT(4) NOT NULL DEFAULT 100,
+PRIMARY KEY (prodId)
+
+
+
+)
+ENGINE=InnoDB
+
+CREATE TABLE users
+(
+userId INT(4) AUTO_INCREMENT NOT NULL,
+userType VARCHAR(30) NOT NULL DEFAULT "Customer",
+userFirstName VARCHAR(30) NOT NULL,
+userLastName VARCHAR(30) NOT NULL,
+userAddress VARCHAR(50),
+userPostCode VARCHAR(15),
+userTelNo VARCHAR(15) NOT NULL,
+userEmail VARCHAR(50) NOT NULL,
+userPassword VARCHAR(30) NOT NULL,
+PRIMARY KEY (userId)
+)
+ENGINE=InnoDB
+
+CREATE TABLE orders
+(
+orderNo INT(4) AUTO_INCREMENT NOT NULL,
+userId INT(4) NOT NULL,
+orderDateTime datetime NOT NULL,
+orderTotal DECIMAL(8,2) DEFAULT 0.00 NOT NULL,
+PRIMARY KEY (orderNo)
+)
+ENGINE=InnoDB
+
+CREATE TABLE order_line
+(
+orderLIneId	INT(4) AUTO_INCREMENT NOT NULL,
+orderNo INT(4) NOT NULL,
+prodId INT(4) NOT NULL,
+quantityOrdered	INT(4) NOT NULL,
+subTotal DECIMAL(8,2) DEFAULT 0.00 NOT NULL,
+PRIMARY KEY (orderLIneId)
+)
+ENGINE=InnoDB
+
+
